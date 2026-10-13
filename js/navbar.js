@@ -6,6 +6,10 @@
   }
   var page = currentPage();
   function activeFor(list) { return list.indexOf(page) !== -1 ? " active-nav" : ""; }
+  function isActive(list) { return list.indexOf(page) !== -1; }
+  function activeClass(list) { return isActive(list) ? ' class="active-nav"' : ""; }
+  var homePages = ["index.html", "home2.html", ""];
+  var dashPages = ["dashboard.html", "admin-dashboard.html"];
   function themeIcon(theme) {
     if (theme === "dark") {
       return '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
@@ -23,16 +27,16 @@
   + '<span class="block text-[.7rem] font-medium tracking-[.18em] uppercase text-[#5FA8A0]">Insurance Advisors</span></span></a>'
 
   + '<ul class="hidden lg:flex items-center gap-1 text-[.95rem] font-medium text-[#24343A] dark:text-[#F4F8F8]">'
-  + '<li class="nav-dropdown" data-dropdown><button type="button" aria-haspopup="true" aria-expanded="false" data-dropdown-btn class="nav-link flex items-center gap-1 rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B] dark:hover:text-white' + activeFor(["index.html","home2.html",""]) + '">Home'
+  + '<li class="nav-dropdown" data-dropdown><button type="button" aria-haspopup="true" aria-expanded="false" data-dropdown-btn class="nav-link flex items-center gap-1 rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B] dark:hover:text-white' + activeFor(homePages) + '">Home'
   + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>'
-  + '<div class="dropdown-panel" role="menu"><a role="menuitem" href="index.html">Home</a><a role="menuitem" href="home2.html">Home 2</a></div></li>'
+  + '<div class="dropdown-panel" role="menu"><a role="menuitem" href="index.html"' + activeClass(["index.html"]) + '>Home 1</a><a role="menuitem" href="home2.html"' + activeClass(["home2.html"]) + '>Home 2</a></div></li>'
   + '<li><a href="about.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B]' + activeFor(["about.html"]) + '">About</a></li>'
   + '<li><a href="plans.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B]' + activeFor(["plans.html"]) + '">Plans</a></li>'
   + '<li><a href="claims.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B]' + activeFor(["claims.html"]) + '">Claims Assistance</a></li>'
   + '<li><a href="contact.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B]' + activeFor(["contact.html"]) + '">Contact</a></li>'
-  + '<li class="nav-dropdown" data-dropdown><button type="button" aria-haspopup="true" aria-expanded="false" data-dropdown-btn class="flex items-center gap-1 rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B]' + activeFor(["dashboard.html","admin-dashboard.html"]) + '">Dashboard'
+  + '<li class="nav-dropdown" data-dropdown><button type="button" aria-haspopup="true" aria-expanded="false" data-dropdown-btn class="flex items-center gap-1 rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] hover:text-[#174A5B]' + activeFor(dashPages) + '">Dashboard'
   + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>'
-  + '<div class="dropdown-panel" role="menu"><a role="menuitem" href="dashboard.html">User Dashboard</a><a role="menuitem" href="admin-dashboard.html">Admin Dashboard</a></div></li>'
+  + '<div class="dropdown-panel" role="menu"><a role="menuitem" href="dashboard.html"' + activeClass(["dashboard.html"]) + '>User Dashboard</a><a role="menuitem" href="admin-dashboard.html"' + activeClass(["admin-dashboard.html"]) + '>Admin Dashboard</a></div></li>'
   + '</ul>'
 
   + '<div class="flex items-center gap-1.5 sm:gap-2">'
@@ -50,16 +54,16 @@
 
   + '<div id="mobile-menu" class="hidden-menu lg:hidden border-t border-[#e3ecec] dark:border-[#2e4f58] bg-white dark:bg-[#15272D]">'
   + '<div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 space-y-1 text-[#24343A] dark:text-[#F4F8F8]">'
-  + '<button type="button" data-m-dropdown-btn aria-expanded="false" class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Home'
+  + '<button type="button" data-m-dropdown-btn aria-expanded="' + (isActive(homePages) ? "true" : "false") + '" class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(homePages) + '">Home'
   + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>'
-  + '<div data-m-dropdown class="hidden ps-3 space-y-1"><a href="index.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Home</a><a href="home2.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Home 2</a></div>'
-  + '<a href="about.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">About</a>'
-  + '<a href="plans.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Plans</a>'
-  + '<a href="claims.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Claims Assistance</a>'
-  + '<a href="contact.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Contact</a>'
-  + '<button type="button" data-m-dropdown-btn aria-expanded="false" class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Dashboard'
+  + '<div data-m-dropdown class="' + (isActive(homePages) ? "" : "hidden ") + 'ps-3 space-y-1"><a href="index.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["index.html"]) + '">Home 1</a><a href="home2.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["home2.html"]) + '">Home 2</a></div>'
+  + '<a href="about.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["about.html"]) + '">About</a>'
+  + '<a href="plans.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["plans.html"]) + '">Plans</a>'
+  + '<a href="claims.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["claims.html"]) + '">Claims Assistance</a>'
+  + '<a href="contact.html" class="block rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["contact.html"]) + '">Contact</a>'
+  + '<button type="button" data-m-dropdown-btn aria-expanded="' + (isActive(dashPages) ? "true" : "false") + '" class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 font-semibold hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(dashPages) + '">Dashboard'
   + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>'
-  + '<div data-m-dropdown class="hidden ps-3 space-y-1"><a href="dashboard.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">User Dashboard</a><a href="admin-dashboard.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]">Admin Dashboard</a></div>'
+  + '<div data-m-dropdown class="' + (isActive(dashPages) ? "" : "hidden ") + 'ps-3 space-y-1"><a href="dashboard.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["dashboard.html"]) + '">User Dashboard</a><a href="admin-dashboard.html" class="block rounded-lg px-3 py-2 hover:bg-[#F4F8F8] dark:hover:bg-[#203940]' + activeFor(["admin-dashboard.html"]) + '">Admin Dashboard</a></div>'
   + '<a href="login.html" class="mt-2 flex items-center justify-center rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-4 py-3 font-semibold text-[#174A5B] dark:text-white">Login</a>'
   + '<a href="plans.html#compare-tool" class="mt-2 flex items-center justify-center rounded-xl bg-[#174A5B] px-4 py-3 font-semibold text-white">Compare Plans</a>'
   + '<div class="flex items-center gap-2 px-3 pt-3">'
