@@ -41,7 +41,7 @@ tailwind.config={darkMode:"class",theme:{screens:{sm:"640px",md:"768px",lg:"1100
 <p class="mt-1 text-sm text-center opacity-70">Access your insurance dashboard.</p>
 <form id="login-form" class="mt-6 space-y-4" novalidate>
 <div><label class="lbl" for="login-email">Email</label><input class="field" id="login-email" name="email" type="email" required autocomplete="email" placeholder="client@clearpath-demo.com"></div>
-<div><label class="lbl" for="login-password">Password</label><input class="field" id="login-password" name="password" type="password" required autocomplete="current-password" placeholder="••••••••"></div>
+<div><label class="lbl" for="login-password">Password</label><div class="relative"><input class="field pw-toggle" id="login-password" name="password" type="password" required autocomplete="current-password" placeholder="••••••••"><button type="button" id="login-password-toggle" aria-label="Show password" aria-pressed="false" title="Show password" class="absolute inset-y-0 end-2 flex items-center rounded-lg p-2 text-[#5b6f76] dark:text-[#B7C7C8] hover:text-[#174A5B] dark:hover:text-white hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"><svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg><svg class="eye-closed hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c6.4 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19"/><path d="M6.61 6.61A18.15 18.15 0 0 0 2 11a10.94 10.94 0 0 0 10 7 9.12 9.12 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/><path d="m2 2 20 20"/></svg></button></div></div>
 <div class="flex items-center justify-between text-sm"><label class="flex items-center gap-2"><input type="checkbox" class="h-4 w-4 accent-[#174A5B]"> Remember Me</label><a href="#" class="text-[#174A5B] dark:text-[#5FA8A0] font-semibold">Forgot Password?</a></div>
 <button type="submit" class="w-full rounded-xl bg-[#174A5B] py-3 font-semibold text-white hover:bg-[#0f3540]">Sign In</button>
 </form>
@@ -95,7 +95,21 @@ panel.classList.add("hidden");panel.classList.remove("flex");menuBtn.setAttribut
 });
 document.addEventListener("keydown",function(e){
 if(e.key!=="Escape")return;
-panel.classList.add("hidden");panel.classList.remove("flex");menuBtn.setAttribute("aria-expanded","false");
+ panel.classList.add("hidden");panel.classList.remove("flex");menuBtn.setAttribute("aria-expanded","false");
+ });
+}
+var pwInput=document.getElementById("login-password"),pwBtn=document.getElementById("login-password-toggle");
+if(pwInput&&pwBtn){
+pwBtn.addEventListener("click",function(){
+var show=pwInput.type==="password";
+pwInput.type=show?"text":"password";
+var label=show?"Hide password":"Show password";
+pwBtn.setAttribute("aria-pressed",show?"true":"false");
+pwBtn.setAttribute("aria-label",label);
+pwBtn.setAttribute("title",label);
+pwBtn.querySelector(".eye-open").classList.toggle("hidden",show);
+pwBtn.querySelector(".eye-closed").classList.toggle("hidden",!show);
+pwInput.focus();
 });
 }
 })();
