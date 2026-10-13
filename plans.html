@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compare Plans With Confidence | ClearPath Insurance Advisors</title>
+<meta name="description" content="Filter and compare demo life and health insurance plans by coverage, benefits, sample premiums, and terms.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.classList.add("dark");var d=localStorage.getItem("site-direction");document.documentElement.dir=d==="rtl"?"rtl":"ltr";}catch(e){}})();
+tailwind.config={darkMode:"class",theme:{screens:{sm:"640px",md:"768px",lg:"1100px",xl:"1280px","2xl":"1536px"},extend:{colors:{trust:"#174A5B",sage:"#5FA8A0",mist:"#F4F8F8",ink:"#24343A",gold:"#D89B5B",darkbg:"#15272D",darksurf:"#203940"},fontFamily:{heading:["Plus Jakarta Sans","Inter","sans-serif"],body:["Inter","sans-serif"]}}}};
+</script>
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+</head>
+<body class="bg-[#F4F8F8] dark:bg-[#15272D] text-[#24343A] dark:text-[#F4F8F8] font-body antialiased">
+<div id="navbar"></div>
+<main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+<nav aria-label="Breadcrumb" class="text-sm opacity-70"><a href="index.html" class="hover:underline">Home</a> / Plans</nav>
+<div class="mt-3 grid gap-6 lg:grid-cols-2 items-center">
+<div class="reveal"><span class="badge-gold">Demo data · Fictional insurers</span>
+<h1 class="mt-3 font-heading text-4xl font-extrabold text-[#174A5B] dark:text-white">Compare Plans With Confidence</h1>
+<p class="mt-3 opacity-75 leading-relaxed">Filter demo plans by life, health, family, individual, or senior needs. All premiums are labeled “sample premium” — availability depends on insurer, location, and eligibility.</p>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<a href="#plan-grid" class="rounded-xl bg-[#174A5B] px-7 py-3 font-semibold text-white hover:bg-[#0f3540] transition text-center">Browse Plans</a>
+<a href="quote.html" class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-7 py-2.5 font-semibold text-[#174A5B] dark:text-white hover:bg-[#174A5B] hover:text-white transition text-center">Get a Free Quote</a>
+</div></div>
+<img src="images/plans/compare.jpg" alt="Side-by-side insurance plan comparison illustration" class="rounded-3xl reveal w-full" loading="lazy">
+</div>
+<div class="mt-10 text-center reveal">
+<h2 class="font-heading text-2xl font-extrabold">Filter Plans by Your Needs</h2>
+<p class="mt-1 text-sm opacity-70">Pick a category to narrow the demo plan list below.</p>
+</div>
+<div class="mt-6 flex flex-wrap justify-center gap-2 reveal" role="group" aria-label="Filter plans">
+<button data-filter="All" aria-pressed="true" class="rounded-full bg-[#174A5B] text-white px-5 py-2 text-sm font-semibold">All</button>
+<button data-filter="Life" class="rounded-full bg-white dark:bg-[#203940] border px-5 py-2 text-sm font-semibold">Life</button>
+<button data-filter="Health" class="rounded-full bg-white dark:bg-[#203940] border px-5 py-2 text-sm font-semibold">Health</button>
+<button data-filter="Family" class="rounded-full bg-white dark:bg-[#203940] border px-5 py-2 text-sm font-semibold">Family</button>
+<button data-filter="Individual" class="rounded-full bg-white dark:bg-[#203940] border px-5 py-2 text-sm font-semibold">Individual</button>
+<button data-filter="Senior" class="rounded-full bg-white dark:bg-[#203940] border px-5 py-2 text-sm font-semibold">Senior</button>
+</div>
+<div id="plan-grid" class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+<section id="compare-tool" class="mt-12 rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 sm:p-8 reveal">
+<h2 class="font-heading text-2xl font-extrabold">Interactive Comparison Tool</h2>
+<p class="mt-1 text-sm opacity-70">Select up to 3 plans. Differences are highlighted. Demo data.</p>
+<div class="mt-5 grid gap-3 sm:grid-cols-3">
+<div><label class="lbl" for="pa">Plan A</label><select id="pa" data-plan-select class="field"><option value="">Choose…</option></select></div>
+<div><label class="lbl" for="pb">Plan B</label><select id="pb" data-plan-select class="field"><option value="">Choose…</option></select></div>
+<div><label class="lbl" for="pc">Plan C</label><select id="pc" data-plan-select class="field"><option value="">Choose…</option></select></div>
+</div>
+<div id="compare-result" class="mt-6"><p class="text-sm opacity-70">Select up to 3 plans to compare.</p></div>
+<div class="mt-4 flex flex-wrap gap-3"><a href="quote.html" class="rounded-xl bg-[#174A5B] px-6 py-2.5 text-sm font-semibold text-white">Get a Personalized Quote</a><a href="contact.html" class="rounded-xl border px-6 py-2.5 text-sm font-semibold">Ask an Advisor</a></div>
+</section>
+<!-- COVERAGE TYPES -->
+<section class="mt-14 sm:mt-16">
+<div class="text-center reveal">
+<span class="badge-gold">Coverage Types</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Not Sure Which Coverage Fits?</h2>
+<p class="mt-2 text-sm opacity-70">A quick guide to the main demo categories on this page.</p>
+</div>
+<div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] overflow-hidden">
+<img src="images/family/family-joy.jpg" alt="Happy family representing family coverage" class="h-44 w-full object-cover" loading="lazy">
+<div class="p-6">
+<h3 class="font-heading text-lg font-bold">Life &amp; Family Cover</h3>
+<p class="mt-2 text-sm opacity-70">Income protection and lump-sum benefits designed to keep your household steady if the unexpected happens.</p>
+<a href="#" data-filter-link="Life" class="mt-3 inline-block text-sm font-semibold text-[#174A5B] dark:text-[#5FA8A0]">View life plans →</a>
+</div>
+</article>
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] overflow-hidden">
+<img src="images/health/checkup.jpg" alt="Caregiver supporting a senior representing health coverage" class="h-44 w-full object-cover" loading="lazy">
+<div class="p-6">
+<h3 class="font-heading text-lg font-bold">Health Cover</h3>
+<p class="mt-2 text-sm opacity-70">Hospitalization, outpatient, and wellness benefits with deductibles, networks, and waiting periods explained in plain words.</p>
+<a href="#" data-filter-link="Health" class="mt-3 inline-block text-sm font-semibold text-[#174A5B] dark:text-[#5FA8A0]">View health plans →</a>
+</div>
+</article>
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] overflow-hidden">
+<img src="images/clients/couple.jpg" alt="Couple representing coverage for couples and families" class="h-44 w-full object-cover object-top" loading="lazy">
+<div class="p-6">
+<h3 class="font-heading text-lg font-bold">Senior Cover</h3>
+<p class="mt-2 text-sm opacity-70">Demo options focused on later-life needs — critical illness, senior health, and renewal-friendly terms.</p>
+<a href="#" data-filter-link="Senior" class="mt-3 inline-block text-sm font-semibold text-[#174A5B] dark:text-[#5FA8A0]">View senior plans →</a>
+</div>
+</article>
+</div>
+</section>
+
+<!-- HOW TO CHOOSE -->
+<section class="mt-14 sm:mt-16 rounded-3xl bg-[#174A5B] text-white overflow-hidden">
+<div class="grid lg:grid-cols-2 items-center">
+<div class="p-6 sm:p-8 lg:p-10">
+<span class="badge-gold !bg-white/15 !text-white !border-white/25 reveal">Decision Guide</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold reveal">How to Choose a Plan</h2>
+<p class="mt-2 text-sm text-white/75 reveal">Four questions worth answering before you compare any numbers.</p>
+<ol class="mt-6 space-y-4">
+<li class="reveal flex gap-4"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 border border-white/25 font-heading font-bold text-sm">1</span><div><h3 class="font-heading font-bold">Who depends on you?</h3><p class="mt-1 text-sm text-white/75">Spouse, children, aging parents — the answer shapes life vs. health priority.</p></div></li>
+<li class="reveal flex gap-4"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 border border-white/25 font-heading font-bold text-sm">2</span><div><h3 class="font-heading font-bold">What can you afford monthly?</h3><p class="mt-1 text-sm text-white/75">Set a comfortable sample-premium ceiling first, then filter within it.</p></div></li>
+<li class="reveal flex gap-4"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 border border-white/25 font-heading font-bold text-sm">3</span><div><h3 class="font-heading font-bold">Which exclusions matter?</h3><p class="mt-1 text-sm text-white/75">Pre-existing conditions, waiting periods, and room-limits often matter more than price.</p></div></li>
+<li class="reveal flex gap-4"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 border border-white/25 font-heading font-bold text-sm">4</span><div><h3 class="font-heading font-bold">Do you need claims help?</h3><p class="mt-1 text-sm text-white/75">Our claims support walks you through documents and follow-ups at no demo cost.</p></div></li>
+</ol>
+<a href="contact.html" class="mt-6 inline-block rounded-xl bg-white px-7 py-3 font-semibold text-[#174A5B] hover:bg-[#F4F8F8] transition reveal">Talk It Through With an Advisor</a>
+</div>
+<img src="images/home/planning-docs.jpg" alt="Professionals reviewing documents to choose coverage" class="h-56 sm:h-72 lg:h-full w-full object-cover" loading="lazy">
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="mt-14 sm:mt-16">
+<div class="text-center reveal">
+<span class="badge-gold">Plan FAQs</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Common Questions About These Plans</h2>
+<p class="mt-2 text-sm opacity-70">Quick answers about the demo data on this page.</p>
+</div>
+<div class="mt-6 space-y-3 max-w-3xl mx-auto">
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">Are these real insurance plans?</summary>
+<p class="mt-2 text-sm opacity-70">No. Every plan, insurer, and premium shown is fictional demo data created to illustrate how comparison works. Nothing on this page is an offer of coverage.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">What does “sample premium” mean?</summary>
+<p class="mt-2 text-sm opacity-70">It is an illustrative monthly price for demo purposes only. Real premiums depend on age, health, location, insurer underwriting, and policy terms.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">Can I compare more than three plans at once?</summary>
+<p class="mt-2 text-sm opacity-70">The comparison tool holds up to 3 plans at a time so differences stay readable. Swap plans in and out as often as you like — it's free and instant.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">What happens after I pick a plan?</summary>
+<p class="mt-2 text-sm opacity-70">Request a quote and an advisor confirms eligibility, walks you through the full policy wording, and helps with application and claims paperwork afterward.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">Is there any cost to use the filters and comparison tool?</summary>
+<p class="mt-2 text-sm opacity-70">No. Filtering, comparing, and quote requests on this demo site are completely free with no obligation to buy anything.</p>
+</details>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="mt-14 sm:mt-16 rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 sm:p-10 lg:p-12 text-center reveal">
+<span class="badge-gold">Free · No Obligation</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Ready to Find Your Plan?</h2>
+<p class="mt-2 text-sm sm:text-base opacity-70 max-w-xl mx-auto">Compare demo coverage side by side, or let an advisor walk you through the options in plain language — your pace, your questions.</p>
+<div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+<a href="#plan-grid" class="rounded-xl bg-[#174A5B] px-7 py-3 font-semibold text-white hover:bg-[#0f3540] transition text-center">Browse Plans</a>
+<a href="quote.html" class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-7 py-2.5 font-semibold text-[#174A5B] dark:text-white hover:bg-[#174A5B] hover:text-white transition text-center">Get a Free Quote</a>
+</div>
+<p class="mt-4 text-xs opacity-60">Demo quotes only. Real coverage depends on insurer underwriting and eligibility.</p>
+</section>
+
+<p class="mt-6 text-xs opacity-60">Sample plan and insurer information shown is fictional demonstration data. EverCare Insurance, Northstar Life, Harbor Health, and Summit Assurance are demo names.</p>
+</main>
+<div id="footer"></div>
+<script src="js/navbar.js"></script><script src="js/footer.js"></script><script src="js/main.js"></script>
+</body>
+</html>

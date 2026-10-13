@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Dashboard | ClearPath Insurance Advisors</title>
+<meta name="description" content="Demo client dashboard — track applications, compare saved quotes, monitor claims, and manage documents.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.classList.add("dark");var d=localStorage.getItem("site-direction");document.documentElement.dir=d==="rtl"?"rtl":"ltr";}catch(e){}})();
+tailwind.config={darkMode:"class",theme:{screens:{sm:"640px",md:"768px",lg:"1100px",xl:"1280px","2xl":"1536px"},extend:{colors:{trust:"#174A5B",sage:"#5FA8A0",mist:"#F4F8F8",ink:"#24343A",gold:"#D89B5B",darkbg:"#15272D",darksurf:"#203940"},fontFamily:{heading:["Plus Jakarta Sans","Inter","sans-serif"],body:["Inter","sans-serif"]}}}};
+</script>
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+</head>
+<body class="bg-[#F4F8F8] dark:bg-[#15272D] text-[#24343A] dark:text-[#F4F8F8] font-body antialiased">
+<div class="flex min-h-screen">
+<div id="dash-backdrop" class="hidden fixed inset-0 bg-black/40 z-30 lg:hidden"></div>
+<aside id="dash-sidebar" class="fixed lg:sticky lg:top-0 lg:h-screen z-40 lg:z-auto top-0 bottom-0 start-0 w-72 lg:w-64 shrink-0 bg-white dark:bg-[#203940] border-e border-[#e3ecec] dark:border-[#2e4f58] p-4 space-y-1 -translate-x-full transition-transform overflow-y-auto" aria-label="Client dashboard menu" style="inset-inline-start:0">
+<div class="flex items-start justify-between gap-2">
+<div class="px-2 py-3 flex items-center gap-2.5">
+<a href="index.html" class="flex items-center gap-2" aria-label="ClearPath home">
+<span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#174A5B] text-white shrink-0" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+<span class="leading-tight"><span class="block font-heading text-[1.05rem] font-extrabold tracking-wide text-[#174A5B] dark:text-white">CLEARPATH</span><span class="block text-[.62rem] font-medium tracking-[.18em] uppercase text-[#5FA8A0]">Insurance Advisors</span></span>
+</a>
+</div>
+<button data-close-sidebar type="button" aria-label="Close menu" class="lg:hidden m-2 shrink-0 rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2 text-[#174A5B] dark:text-white hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+</div>
+<div class="px-2 py-1 border-b border-[#e3ecec] dark:border-[#2e4f58] pb-3 mb-2"><p class="font-heading font-bold text-sm">Client Portal</p><p class="text-xs opacity-60">Demo portal — secure backend required for production.</p></div>
+<div class="lg:hidden mt-3 px-2 pb-3 mb-2 border-b border-[#e3ecec] dark:border-[#2e4f58]">
+<p class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Settings</p>
+<div class="flex flex-wrap items-center gap-2">
+<button data-theme-toggle type="button" aria-label="Toggle color theme" title="Toggle color theme" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"></button>
+<button data-rtl-toggle type="button" aria-label="Toggle text direction" title="Toggle text direction (LTR/RTL)" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></button>
+<button type="button" aria-label="Notifications" title="Notifications" onclick="showToast('No new notifications (demo).')" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg></button>
+<button type="button" data-section="profile" aria-label="Open profile" class="flex items-center gap-2 rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-1.5 pe-3 hover:bg-[#F4F8F8] dark:hover:bg-[#15272D] transition"><img src="images/testimonials/client-2.jpg" alt="" class="h-8 w-8 rounded-full object-cover" loading="lazy"><span class="text-sm font-semibold">Demo Client</span></button>
+</div>
+</div>
+<a href="#overview" data-section="overview" class="sidebar-link active"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Overview</a>
+<a href="#quotes" data-section="quotes" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Compare Quotes</a>
+<a href="#applications" data-section="applications" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>Applications</a>
+<a href="#claims" data-section="claims" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Claims</a>
+<a href="#documents" data-section="documents" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Documents</a>
+<a href="#profile" data-section="profile" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a>
+<a href="#support" data-section="support" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>Support</a>
+<button data-logout class="sidebar-link w-full text-start"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</button>
+</aside>
+<div class="flex-1 min-w-0 flex flex-col">
+<header class="sticky top-0 z-20 bg-white/90 dark:bg-[#15272D]/90 backdrop-blur border-b border-[#e3ecec] dark:border-[#2e4f58]">
+<div class="flex items-center justify-between gap-3 px-4 sm:px-6 py-3">
+<div class="flex items-center gap-2.5">
+<a href="index.html" class="flex items-center gap-2" aria-label="ClearPath home">
+<span class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#174A5B] text-white" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+<span class="leading-tight"><span class="block font-heading text-sm font-extrabold tracking-wide text-[#174A5B] dark:text-white">CLEARPATH</span><span class="block text-[.62rem] font-medium tracking-[.18em] uppercase text-[#5FA8A0]">Client Portal</span></span>
+</a>
+</div>
+<div class="flex items-center gap-1.5 sm:gap-2">
+<div class="hidden lg:flex items-center gap-1.5 sm:gap-2">
+<button data-theme-toggle type="button" aria-label="Toggle color theme" title="Toggle color theme" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#203940]"></button>
+<button data-rtl-toggle type="button" aria-label="Toggle text direction" title="Toggle text direction (LTR/RTL)" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#203940]"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></button>
+<button type="button" aria-label="Notifications" title="Notifications" onclick="showToast('No new notifications (demo).')" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#203940]"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg></button>
+<button type="button" data-section="profile" aria-label="Open profile" class="flex items-center gap-2 rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-1.5 pe-3 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] transition"><img src="images/testimonials/client-2.jpg" alt="" class="h-8 w-8 rounded-full object-cover" loading="lazy"><span class="hidden sm:block text-sm font-semibold">Demo Client</span></button>
+</div>
+<button id="dash-menu-btn" type="button" aria-label="Open dashboard menu" class="lg:hidden rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] bg-white dark:bg-[#203940] p-2.5 text-[#174A5B] dark:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+</div>
+</div>
+</header>
+<main class="flex-1 p-4 sm:p-6 space-y-6 max-w-7xl w-full mx-auto">
+<div class="rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 sm:p-6">
+<h1 class="font-heading text-2xl font-extrabold">Welcome back, Client</h1><p class="text-sm opacity-60">Your account information is displayed securely within your client portal.</p>
+</div>
+<!-- OVERVIEW -->
+<section id="overview" class="dash-section grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs font-bold uppercase tracking-wider opacity-60">Active Applications</p><p class="mt-1 font-heading text-2xl font-extrabold">2</p><p class="text-xs mt-1">Life Insurance Application · <button data-cycle-status="Under Review|Documents Verified|Decision Pending" class="font-semibold text-[#5FA8A0] underline">Under Review</button></p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs font-bold uppercase tracking-wider opacity-60">Saved Quotes</p><p class="mt-1 font-heading text-2xl font-extrabold">3</p><p class="text-xs mt-1">Health Insurance Quote · <span class="badge-gold">Comparison Ready</span></p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs font-bold uppercase tracking-wider opacity-60">Open Claims</p><p class="mt-1 font-heading text-2xl font-extrabold">1</p><p class="text-xs mt-1">Claim · <span class="font-semibold">Documents Requested</span></p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs font-bold uppercase tracking-wider opacity-60">Policies</p><p class="mt-1 font-heading text-2xl font-extrabold">1</p><p class="text-xs mt-1">Family Health · Active (demo)</p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58] sm:col-span-2 xl:col-span-4">
+<h3 class="font-heading font-extrabold">Recent Activity</h3>
+<ul class="mt-4 space-y-3 text-sm">
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="font-semibold">Application documents verified</p><p class="text-xs opacity-60">Family Health Coverage · 10 Oct 2026</p></div></li>
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg></span><div><p class="font-semibold">New quote saved — Harbor Health Family Plus</p><p class="text-xs opacity-60">06 Oct 2026</p></div></li>
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D89B5B]/15 text-[#D89B5B]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></span><div><p class="font-semibold">Claim CLM-1007 — additional documents requested</p><p class="text-xs opacity-60">12 Sep 2026</p></div></li>
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></span><div><p class="font-semibold">Policy Family Health activated</p><p class="text-xs opacity-60">01 Aug 2026</p></div></li>
+</ul>
+</div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58] sm:col-span-2">
+<h3 class="font-heading font-extrabold">Policy Renewal</h3>
+<p class="mt-2 text-sm opacity-70">Your Family Health policy renews on <strong>01 Aug 2027</strong>. We'll remind you 30 days before.</p>
+<div class="mt-3 progress-track"><div class="progress-fill" style="width:35%"></div></div>
+<p class="mt-2 text-xs opacity-60">35% of the current term elapsed (demo)</p>
+</div>
+<div class="rounded-2xl bg-[#174A5B] text-white p-5 sm:col-span-2">
+<h3 class="font-heading font-extrabold">Quick Actions</h3>
+<div class="mt-3 flex flex-wrap gap-2">
+<button data-section="quotes" class="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-[#174A5B]">Compare Quotes</button>
+<button data-section="claims" class="rounded-xl border border-white/40 px-4 py-2 text-sm font-semibold">File a Claim</button>
+<a href="contact.html" class="rounded-xl border border-white/40 px-4 py-2 text-sm font-semibold">Talk to Advisor</a>
+</div>
+</div>
+</section>
+<!-- QUOTES -->
+<section id="quotes" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 sm:p-6">
+<div class="flex flex-wrap items-center justify-between gap-3">
+<div><h2 class="font-heading text-xl font-extrabold">My Saved Quotes</h2><p class="text-xs opacity-60 mt-1">Demo information. Select View Details to compare coverage.</p></div>
+<div class="flex gap-2">
+<input type="search" placeholder="Search quotes…" class="field !w-auto !py-2 text-sm" aria-label="Search quotes">
+<button onclick="showToast('New quote request started (demo).')" class="rounded-xl bg-[#174A5B] px-4 py-2 text-sm font-semibold text-white">+ New Quote</button>
+</div>
+</div>
+<div class="mt-4 grid gap-3 sm:grid-cols-3">
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Awaiting your review</p><p class="font-heading font-extrabold">1</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Comparison ready</p><p class="font-heading font-extrabold">2</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Expired</p><p class="font-heading font-extrabold">1</p></div>
+</div>
+<div class="table-scroll mt-4"><table class="stack-table w-full min-w-[640px] text-sm"><thead><tr class="text-start text-xs uppercase opacity-60"><th class="text-start py-2 pe-3">Insurer</th><th class="text-start py-2 pe-3">Plan</th><th class="text-start py-2 pe-3">Coverage</th><th class="text-start py-2 pe-3">Sample Premium</th><th class="text-start py-2 pe-3">Status</th><th class="text-start py-2">Action</th></tr></thead><tbody id="saved-quotes-body"></tbody></table></div>
+<div class="mt-4 rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-4 text-sm"><strong>Tip:</strong> Use the <a href="plans.html#compare-tool" class="text-[#174A5B] dark:text-[#5FA8A0] font-semibold underline">comparison tool</a> to see differences side by side — waiting periods, exclusions, and premiums highlighted.</div>
+</section>
+<!-- APPLICATIONS -->
+<section id="applications" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 sm:p-6">
+<h2 class="font-heading text-xl font-extrabold">Application Tracker</h2>
+<div class="mt-5 grid gap-6 lg:grid-cols-2">
+<div>
+<p class="text-sm opacity-70"><strong>Family Health Coverage</strong> — click the status pill to preview demo status changes.</p>
+<ol class="mt-5 space-y-4">
+<li class="flex gap-3 items-start"><span class="timeline-dot done"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="font-semibold text-sm">Application Submitted</p><p class="text-xs opacity-60">Received · demo receipt #APP-2041</p></div></li>
+<li class="flex gap-3 items-start"><span class="timeline-dot done"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="font-semibold text-sm">Documents Verified</p><p class="text-xs opacity-60">ID and forms checked (demo)</p></div></li>
+<li class="flex gap-3 items-start"><span class="timeline-dot">3</span><div><p class="font-semibold text-sm">Under Review — <button data-cycle-status="Under Review|Decision Pending|Completed" class="text-[#5FA8A0] underline">Under Review</button></p><p class="text-xs opacity-60">Insurer review stage (demo)</p></div></li>
+<li class="flex gap-3 items-start"><span class="timeline-dot">4</span><div><p class="font-semibold text-sm">Decision Pending</p><p class="text-xs opacity-60">Outcome not guaranteed</p></div></li>
+<li class="flex gap-3 items-start"><span class="timeline-dot">5</span><div><p class="font-semibold text-sm">Completed</p><p class="text-xs opacity-60">Policy documents issued (demo)</p></div></li>
+</ol>
+</div>
+<div class="space-y-4">
+<div class="rounded-2xl border border-[#e3ecec] dark:border-[#2e4f58] p-4">
+<div class="flex items-center justify-between gap-2"><p class="font-heading font-bold">Term Life Protect 20</p><span class="badge-gold">Documents Pending</span></div>
+<p class="mt-1 text-xs opacity-60">#APP-2055 · Submitted 03 Oct 2026 · Northstar Life</p>
+<p class="mt-2 text-sm opacity-70">Outstanding: medical questionnaire and employer letter.</p>
+<button class="mt-3 rounded-xl bg-[#174A5B] px-4 py-2 text-xs font-semibold text-white" onclick="showToast('Upload dialog opened (demo).')">Upload Documents</button>
+</div>
+<div class="rounded-2xl border border-[#e3ecec] dark:border-[#2e4f58] p-4">
+<h3 class="font-heading font-bold text-sm">What you'll need</h3>
+<ul class="mt-2 space-y-1 text-xs opacity-70">
+<li>· Government-issued photo ID</li><li>· Proof of address (utility bill)</li><li>· Latest income summary (if requested)</li><li>· Signed proposal form</li>
+</ul>
+</div>
+<div class="rounded-2xl bg-[#F4F8F8] dark:bg-[#15272D] p-4 text-sm"><strong>Advisor note:</strong> Most demo decisions arrive within 5–7 business days after documents are verified.</div>
+</div>
+</div>
+</section>
+<!-- CLAIMS -->
+<section id="claims" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 sm:p-6">
+<h2 class="font-heading text-xl font-extrabold">My Claims</h2>
+<p class="mt-1 text-xs opacity-60">Track open and past claims. Status updates appear here as insurers respond.</p>
+<div class="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+<div class="rounded-2xl border border-[#e3ecec] dark:border-[#2e4f58] p-4"><p class="text-xs opacity-60">Claim ID: CLM-1007 · Submitted 12 Sep 2026</p><p class="font-semibold mt-1">Family Health · Hospitalization</p><p class="text-sm mt-1">Status: <span class="badge-gold">Documents Requested</span></p><button class="mt-3 rounded-xl bg-[#174A5B] px-4 py-2 text-xs font-semibold text-white" onclick="showToast('Claim information saved.')">View Claim</button></div>
+<div class="rounded-2xl border border-[#e3ecec] dark:border-[#2e4f58] p-4"><p class="text-xs opacity-60">Claim ID: CLM-0988 · Submitted 02 Aug 2026</p><p class="font-semibold mt-1">Term Protect · Review</p><p class="text-sm mt-1">Status: <span class="badge-gold">Under Review</span></p><button class="mt-3 rounded-xl border px-4 py-2 text-xs font-semibold" onclick="showToast('Claim information saved.')">View Claim</button></div>
+<div class="rounded-2xl border border-[#e3ecec] dark:border-[#2e4f58] p-4"><p class="text-xs opacity-60">Claim ID: CLM-0841 · Submitted 14 Jun 2026</p><p class="font-semibold mt-1">Family Health · Outpatient</p><p class="text-sm mt-1">Status: <span class="badge-gold">Completed</span></p><button class="mt-3 rounded-xl border px-4 py-2 text-xs font-semibold" onclick="showToast('Claim statement opened (demo).')">View Statement</button></div>
+</div>
+<div class="mt-5 grid gap-3 md:grid-cols-3">
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-4 text-sm"><p class="text-xs opacity-60">Docs still needed</p><p class="font-heading font-extrabold text-lg">2</p><p class="text-xs opacity-60">for CLM-1007</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-4 text-sm"><p class="text-xs opacity-60">Average demo processing</p><p class="font-heading font-extrabold text-lg">7 days</p><p class="text-xs opacity-60">after complete documents</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-4 text-sm"><p class="text-xs opacity-60">Completed this year</p><p class="font-heading font-extrabold text-lg">1</p><p class="text-xs opacity-60">outpatient claim</p></div>
+</div>
+<div class="mt-5 rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-4 text-sm"><strong>Next step for CLM-1007:</strong> upload the discharge summary and pharmacy bill, then we'll re-check completeness before it goes back to the insurer. <a href="claims.html" class="text-[#174A5B] dark:text-[#5FA8A0] font-semibold underline">Open claims help →</a></div>
+</section>
+<!-- DOCUMENTS -->
+<section id="documents" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 sm:p-6">
+<h2 class="font-heading text-xl font-extrabold">Documents</h2>
+<p class="mt-1 text-xs opacity-60">All demo documents in one place — view, download, or upload new ones.</p>
+<div class="mt-4 grid gap-3 sm:grid-cols-2">
+<div class="rounded-2xl bg-[#F4F8F8] dark:bg-[#15272D] p-4"><p class="font-semibold text-sm">Policy Summary (sample)</p><p class="text-xs opacity-60 mt-1">Updated 01 Aug 2026</p><div class="mt-2 flex gap-2"><button class="rounded-lg bg-[#174A5B] px-3 py-1.5 text-xs text-white font-semibold" onclick="showToast('Demo document preview.')">View</button><button class="rounded-lg border px-3 py-1.5 text-xs" onclick="showToast('Demo download started.')">Download</button></div></div>
+<div class="rounded-2xl bg-[#F4F8F8] dark:bg-[#15272D] p-4"><p class="font-semibold text-sm">Quote Summary (sample)</p><p class="text-xs opacity-60 mt-1">Updated 06 Oct 2026</p><div class="mt-2 flex gap-2"><button class="rounded-lg bg-[#174A5B] px-3 py-1.5 text-xs text-white font-semibold" onclick="showToast('Demo document preview.')">View</button><button class="rounded-lg border px-3 py-1.5 text-xs" onclick="showToast('Demo download started.')">Download</button></div></div>
+<div class="rounded-2xl bg-[#F4F8F8] dark:bg-[#15272D] p-4"><p class="font-semibold text-sm">Application Receipt (sample)</p><p class="text-xs opacity-60 mt-1">Updated 08 Oct 2026</p><div class="mt-2 flex gap-2"><button class="rounded-lg bg-[#174A5B] px-3 py-1.5 text-xs text-white font-semibold" onclick="showToast('Demo document preview.')">View</button><button class="rounded-lg border px-3 py-1.5 text-xs" onclick="showToast('Demo download started.')">Download</button></div></div>
+<div class="rounded-2xl bg-[#F4F8F8] dark:bg-[#15272D] p-4"><p class="font-semibold text-sm">Claim Documents (sample)</p><p class="text-xs opacity-60 mt-1">Updated 12 Sep 2026</p><div class="mt-2 flex gap-2"><button class="rounded-lg bg-[#174A5B] px-3 py-1.5 text-xs text-white font-semibold" onclick="showToast('Demo document preview.')">View</button><button class="rounded-lg border px-3 py-1.5 text-xs" onclick="showToast('Demo download started.')">Download</button></div></div>
+</div>
+<button class="mt-4 w-full rounded-2xl border-2 border-dashed border-[#e3ecec] dark:border-[#2e4f58] p-6 text-sm opacity-70 hover:border-[#5FA8A0] hover:opacity-100 transition" onclick="showToast('File picker would open here (demo).')">
+<strong class="block font-heading">Upload a document</strong>PDF, JPG or PNG · max 10 MB (demo)
+</button>
+</section>
+<!-- PROFILE -->
+<section id="profile" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 sm:p-6">
+<h2 class="font-heading text-xl font-extrabold">Profile</h2>
+<p class="mt-1 text-xs opacity-60">Keep your contact details current so advisors can reach you.</p>
+<form data-validate="contact" class="mt-4 grid gap-4 sm:grid-cols-2"><div><label class="lbl" for="pf-name">Full Name</label><input id="pf-name" class="field" value="Demo Client"></div><div><label class="lbl" for="pf-email">Email</label><input id="pf-email" type="email" class="field" value="client@clearpath-demo.com"></div><div><label class="lbl" for="pf-phone">Phone</label><input id="pf-phone" type="tel" class="field" value="+1 (555) 987-6543"></div><div><label class="lbl" for="pf-contact">Preferred Contact</label><select id="pf-contact" class="field"><option>Email</option><option selected>Phone</option><option>Either</option></select></div><div class="sm:col-span-2"><button class="rounded-xl bg-[#174A5B] px-6 py-2.5 text-sm font-semibold text-white">Save Changes</button></div></form>
+<h3 class="mt-8 font-heading font-extrabold">Notification Preferences</h3>
+<div class="mt-3 space-y-2 text-sm">
+<label class="flex items-center gap-3"><input type="checkbox" checked class="h-5 w-5 accent-[#174A5B]"> Email me application status changes</label>
+<label class="flex items-center gap-3"><input type="checkbox" checked class="h-5 w-5 accent-[#174A5B]"> Email me claim document requests</label>
+<label class="flex items-center gap-3"><input type="checkbox" class="h-5 w-5 accent-[#174A5B]"> SMS reminders for policy renewal</label>
+<label class="flex items-center gap-3"><input type="checkbox" checked class="h-5 w-5 accent-[#174A5B]"> Monthly coverage summary email</label>
+</div>
+<h3 class="mt-8 font-heading font-extrabold">Change Password</h3>
+<form class="mt-3 grid gap-4 sm:grid-cols-2" onsubmit="event.preventDefault();showToast('Password updated (demo).')"><div><label class="lbl" for="pf-pass">New Password</label><input id="pf-pass" type="password" class="field" placeholder="••••••••"></div><div><label class="lbl" for="pf-pass2">Confirm Password</label><input id="pf-pass2" type="password" class="field" placeholder="••••••••"></div><div class="sm:col-span-2"><button class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-6 py-2.5 text-sm font-semibold text-[#174A5B] dark:text-white">Update Password</button></div></form>
+</section>
+<!-- SUPPORT -->
+<section id="support" class="dash-section hidden rounded-2xl bg-[#174A5B] text-white p-6">
+<h2 class="font-heading text-xl font-extrabold">Need Help?</h2><p class="text-sm text-white/75 mt-1">Message your advisor or book a call — we usually respond within one business day.</p>
+<div class="mt-3 flex flex-wrap gap-2"><a href="contact.html" class="rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-[#174A5B]">Contact Advisor</a><a href="claims.html" class="rounded-xl border border-white/40 px-5 py-2.5 text-sm font-semibold">Claims Help</a></div>
+<div class="mt-6 grid gap-4 md:grid-cols-2">
+<form class="rounded-2xl bg-white/10 border border-white/15 p-4" onsubmit="event.preventDefault();showToast('Message sent to your advisor (demo).')">
+<h3 class="font-heading font-bold text-sm">Send a quick message</h3>
+<textarea rows="3" class="mt-2 w-full rounded-xl bg-white/10 border border-white/25 p-3 text-sm text-white placeholder-white/50" placeholder="Type your question…"></textarea>
+<button class="mt-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-[#174A5B]">Send Message</button>
+</form>
+<div class="space-y-2 text-sm">
+<details class="rounded-2xl bg-white/10 border border-white/15 p-4"><summary class="cursor-pointer font-bold">How do I add a family member?</summary><p class="mt-2 text-white/75 text-xs">Contact your advisor — additional members need a fresh eligibility check (demo).</p></details>
+<details class="rounded-2xl bg-white/10 border border-white/15 p-4"><summary class="cursor-pointer font-bold">Can I change my premium payment date?</summary><p class="mt-2 text-white/75 text-xs">Yes, usually once per policy year. Advisor can reschedule it for you (demo).</p></details>
+<details class="rounded-2xl bg-white/10 border border-white/15 p-4"><summary class="cursor-pointer font-bold">What if I miss a payment?</summary><p class="mt-2 text-white/75 text-xs">Most demo insurers allow a 30-day grace period. Contact us early to avoid lapse.</p></details>
+</div>
+</div>
+</section>
+</main>
+<footer class="px-4 sm:px-6 py-4 text-center text-xs opacity-60 border-t border-[#e3ecec] dark:border-[#2e4f58]">Demo client portal. No real account data is stored.</footer>
+</div>
+</div>
+<div id="quote-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Quote details"><div class="modal-card w-full max-w-lg rounded-3xl bg-white dark:bg-[#203940] p-6 sm:p-8"><div id="quote-modal-body"></div><button data-close-modal class="mt-5 rounded-xl bg-[#174A5B] px-6 py-2.5 text-sm font-semibold text-white">Close</button></div></div>
+<script src="js/dashboard.js"></script><script src="js/main.js"></script>
+</body>
+</html>

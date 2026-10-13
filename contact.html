@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact an Advisor | ClearPath Insurance Advisors</title>
+<meta name="description" content="Book a consultation with a ClearPath insurance advisor. Friendly, no-pressure guidance on life and health coverage.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.classList.add("dark");var d=localStorage.getItem("site-direction");document.documentElement.dir=d==="rtl"?"rtl":"ltr";}catch(e){}})();
+tailwind.config={darkMode:"class",theme:{screens:{sm:"640px",md:"768px",lg:"1100px",xl:"1280px","2xl":"1536px"},extend:{colors:{trust:"#174A5B",sage:"#5FA8A0",mist:"#F4F8F8",ink:"#24343A",gold:"#D89B5B",darkbg:"#15272D",darksurf:"#203940"},fontFamily:{heading:["Plus Jakarta Sans","Inter","sans-serif"],body:["Inter","sans-serif"]}}}};
+</script>
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+</head>
+<body class="bg-[#F4F8F8] dark:bg-[#15272D] text-[#24343A] dark:text-[#F4F8F8] font-body antialiased">
+<div id="navbar"></div>
+<main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+<nav aria-label="Breadcrumb" class="text-sm opacity-70"><a href="index.html" class="hover:underline">Home</a> / Contact</nav>
+<!-- hero banner -->
+<div class="mt-3 grid gap-6 lg:grid-cols-2 items-center">
+<div class="reveal">
+<span class="badge-gold">Free Consultation · No Pressure</span>
+<h1 class="mt-3 font-heading text-4xl font-extrabold text-[#174A5B] dark:text-white">Talk to an Advisor</h1>
+<p class="mt-3 opacity-75 leading-relaxed">Book a friendly consultation — in person, by phone, or video. No pressure, just clear answers about life and health coverage.</p>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<a href="#consult-form" class="rounded-xl bg-[#174A5B] px-7 py-3 font-semibold text-white hover:bg-[#0f3540] transition text-center">Book a Consultation</a>
+<a href="tel:+15551234567" class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-7 py-2.5 font-semibold text-[#174A5B] dark:text-white hover:bg-[#174A5B] hover:text-white transition text-center">Call +1 (555) 123-4567</a>
+</div>
+</div>
+<img src="images\home\planning-docs.jpg" alt="Person working on a laptop by a bright window" class="rounded-3xl reveal w-full" loading="lazy">
+</div>
+<!-- contact info + form -->
+<div class="mt-12 grid gap-8 lg:grid-cols-2 items-start">
+<div class="reveal">
+<h2 class="font-heading text-2xl font-extrabold">Reach Us Directly</h2>
+<p class="mt-2 text-sm opacity-70">Prefer to skip the form? Any of these channels reach a real person during office hours.</p>
+<div class="mt-6 space-y-3 text-sm">
+<p class="rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-4"><strong>Phone:</strong> <a href="tel:+15551234567" class="text-[#174A5B] dark:text-[#5FA8A0]">+1 (555) 123-4567</a><br><strong>Email:</strong> <a href="mailto:hello@clearpath-advisors.demo" class="text-[#174A5B] dark:text-[#5FA8A0]">hello@clearpath-advisors.demo</a><br><strong>Office:</strong> 428 Harbor View Ave, Suite 210, Lakeside<br><strong>Hours:</strong> Mon–Fri, 9:00 AM – 6:00 PM</p>
+</div>
+<img src="images/hero/contact-support.jpg" alt="Phone and workspace ready for client questions" class="mt-6 w-full rounded-3xl" loading="lazy">
+</div>
+<form id="consult-form" data-validate="consult" class="reveal rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 sm:p-8 grid gap-5 sm:grid-cols-2 self-start" novalidate>
+<h2 class="sm:col-span-2 font-heading text-2xl font-extrabold">Request a Consultation</h2>
+<div><label class="lbl" for="c-name">Full Name *</label><input class="field" id="c-name" name="name" required autocomplete="name"></div>
+<div><label class="lbl" for="c-email">Email *</label><input class="field" id="c-email" name="email" type="email" required autocomplete="email"></div>
+<div><label class="lbl" for="c-phone">Phone *</label><input class="field" id="c-phone" name="phone" type="tel" required autocomplete="tel"></div>
+<div><label class="lbl" for="c-type">Insurance Type *</label><select class="field" id="c-type" name="type" required><option value="">Choose…</option><option>Life</option><option>Health</option><option>Both</option></select></div>
+<div><label class="lbl" for="c-date">Preferred Date *</label><input class="field" id="c-date" name="date" type="date" required></div>
+<div><label class="lbl" for="c-time">Preferred Time *</label><select class="field" id="c-time" name="time" required><option value="">Choose…</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+<div class="sm:col-span-2"><label class="lbl" for="c-msg">Message</label><textarea class="field" id="c-msg" name="message" rows="4" placeholder="What would you like help understanding?"></textarea></div>
+<div class="sm:col-span-2"><button type="submit" class="w-full rounded-xl bg-[#174A5B] px-8 py-3.5 font-semibold text-white hover:bg-[#0f3540]">Request Consultation</button></div>
+<p class="sm:col-span-2 text-xs opacity-60">Demo form only — submissions are not sent anywhere.</p>
+</form>
+</div>
+<!-- ways to reach us -->
+<section class="mt-14">
+<div class="text-center reveal">
+<span class="badge-gold">Contact Options</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Ways to Reach Us</h2>
+<p class="mt-2 text-sm opacity-70">Choose whichever channel feels easiest — every one of them lands with a real person.</p>
+</div>
+<div class="mt-6 grid gap-4 sm:grid-cols-3">
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 text-center">
+<span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+<h3 class="mt-4 font-heading text-lg font-bold">Call Us</h3>
+<p class="mt-2 text-sm opacity-70">Quickest for urgent questions. Mon–Fri, 9 AM – 6 PM.</p>
+<a href="tel:+15551234567" class="mt-3 inline-block text-sm font-semibold text-[#174A5B] dark:text-[#5FA8A0]">+1 (555) 123-4567 →</a>
+</article>
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 text-center">
+<span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+<h3 class="mt-4 font-heading text-lg font-bold">Email Us</h3>
+<p class="mt-2 text-sm opacity-70">Great for documents and detailed questions. Replies within 24h.</p>
+<a href="mailto:hello@clearpath-advisors.demo" class="mt-3 inline-block text-sm font-semibold text-[#174A5B] dark:text-[#5FA8A0]">hello@clearpath-advisors.demo →</a>
+</article>
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 text-center">
+<span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></span>
+<h3 class="mt-4 font-heading text-lg font-bold">Visit the Office</h3>
+<p class="mt-2 text-sm opacity-70">428 Harbor View Ave, Suite 210, Lakeside. Appointments preferred.</p>
+<a href="#office-map" class="mt-3 inline-block text-sm font-semibold text-[#174A5B] dark:text-[#5FA8A0]">See map below →</a>
+</article>
+</div>
+</section>
+
+<!-- map -->
+<section id="office-map" class="mt-14 relative rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] overflow-hidden reveal">
+<div class="grid lg:grid-cols-2 items-stretch lg:min-h-[540px]">
+<div class="p-6 sm:p-8 lg:p-10">
+<span class="badge-gold">Visit Us</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Find Our Office</h2>
+<p class="mt-2 text-sm opacity-70">We're on Harbor View Ave, a short walk from the Lakeside ferry terminal. Street parking available.</p>
+<dl class="mt-6 space-y-4">
+<div class="flex gap-3">
+<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+<div><dt class="font-heading font-bold text-sm">Address</dt><dd class="mt-0.5 text-sm opacity-70">428 Harbor View Ave, Suite 210<br>Lakeside</dd></div>
+</div>
+<div class="flex gap-3">
+<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+<div><dt class="font-heading font-bold text-sm">Opening Hours</dt><dd class="mt-0.5 text-sm opacity-70">Mon – Fri: 9:00 AM – 6:00 PM<br>Sat – Sun: Closed</dd></div>
+</div>
+<div class="flex gap-3">
+<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+<div><dt class="font-heading font-bold text-sm">Phone &amp; Email</dt><dd class="mt-0.5 text-sm opacity-70">+1 (555) 123-4567<br>hello@clearpath-advisors.demo</dd></div>
+</div>
+</dl>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<a href="#consult-form" class="rounded-xl bg-[#174A5B] px-7 py-3 font-semibold text-white hover:bg-[#0f3540] transition text-center">Book an Appointment</a>
+<a href="https://www.openstreetmap.org/?mlat=43.0389&amp;mlon=-87.9065#map=16/43.0389/-87.9065" target="_blank" rel="noopener" class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-7 py-2.5 font-semibold text-[#174A5B] dark:text-white hover:bg-[#174A5B] hover:text-white transition text-center">Get Directions</a>
+</div>
+<p class="mt-4 text-xs opacity-60">Fictional demo office location shown for illustration only.</p>
+</div>
+<div class="relative h-[300px] sm:h-[400px] lg:h-auto">
+<iframe title="ClearPath office location map" src="https://www.openstreetmap.org/export/embed.html?bbox=-87.9215%2C43.0309%2C-87.8915%2C43.0469&amp;layer=mapnik&amp;marker=43.0389%2C-87.9065" class="absolute inset-0 h-full w-full border-0 block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</section>
+<!-- FAQs -->
+<section class="mt-14">
+<div class="text-center reveal">
+<span class="badge-gold">Contact FAQ</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Before You Reach Out</h2>
+<p class="mt-2 text-sm opacity-70">A few things clients usually want to know first.</p>
+</div>
+<div class="mt-6 space-y-3 max-w-3xl mx-auto">
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">Is the consultation really free?</summary>
+<p class="mt-2 text-sm opacity-70">Yes. Consultations are free with no obligation to buy anything. Our goal is to help you understand your options — the decision is always yours.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">Can I meet by video instead of in person?</summary>
+<p class="mt-2 text-sm opacity-70">Absolutely. Choose your preferred time in the form and mention video in the message — we'll send a meeting link along with the confirmation.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">How soon will someone get back to me?</summary>
+<p class="mt-2 text-sm opacity-70">We aim to respond within one business day. If your question is urgent, calling during office hours is the fastest way to reach us.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">Do I need to bring documents to the first meeting?</summary>
+<p class="mt-2 text-sm opacity-70">Nothing is required for a first chat. If you already have a policy summary or renewal notice, bringing it helps us give more specific guidance.</p>
+</details>
+<details class="reveal rounded-2xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-5 open:ring-2 open:ring-[#5FA8A0]/40">
+<summary class="cursor-pointer font-heading font-bold text-sm sm:text-base">Is this a real brokerage?</summary>
+<p class="mt-2 text-sm opacity-70">No — this is a fictional demo website. The forms, advisors, office, and contact details shown are for illustration purposes only.</p>
+</details>
+</div>
+</section>
+<!-- CTA -->
+<section class="mt-14 rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 sm:p-10 lg:p-12 text-center reveal">
+<span class="badge-gold">No Pressure · Just Answers</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Still Have Questions?</h2>
+<p class="mt-2 text-sm sm:text-base opacity-70 max-w-xl mx-auto">Whether you're comparing plans or filing a claim, a quick conversation can clear things up — free, friendly, and at your pace.</p>
+<div class="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+<a href="#consult-form" class="rounded-xl bg-[#174A5B] px-7 py-3 font-semibold text-white hover:bg-[#0f3540] transition text-center">Book a Consultation</a>
+<a href="quote.html" class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-7 py-2.5 font-semibold text-[#174A5B] dark:text-white hover:bg-[#174A5B] hover:text-white transition text-center">Get a Free Quote</a>
+</div>
+<p class="mt-4 text-xs opacity-60">Demo site — consultations and quotes are illustrative only.</p>
+</section>
+</main>
+<div id="footer"></div>
+<script src="js/navbar.js"></script><script src="js/footer.js"></script><script src="js/main.js"></script>
+</body>
+</html>

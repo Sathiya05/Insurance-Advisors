@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get a Personalized Quote | ClearPath Insurance Advisors</title>
+<meta name="description" content="Request a personalized demo insurance quote. Simple fields, clear validation, no sensitive medical details required.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.classList.add("dark");var d=localStorage.getItem("site-direction");document.documentElement.dir=d==="rtl"?"rtl":"ltr";}catch(e){}})();
+tailwind.config={darkMode:"class",theme:{screens:{sm:"640px",md:"768px",lg:"1100px",xl:"1280px","2xl":"1536px"},extend:{colors:{trust:"#174A5B",sage:"#5FA8A0",mist:"#F4F8F8",ink:"#24343A",gold:"#D89B5B",darkbg:"#15272D",darksurf:"#203940"},fontFamily:{heading:["Plus Jakarta Sans","Inter","sans-serif"],body:["Inter","sans-serif"]}}}};
+</script>
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+</head>
+<body class="bg-[#F4F8F8] dark:bg-[#15272D] text-[#24343A] dark:text-[#F4F8F8] font-body antialiased">
+<div id="navbar"></div>
+<main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+<nav aria-label="Breadcrumb" class="text-sm opacity-70"><a href="index.html" class="hover:underline">Home</a> / Quote</nav>
+<!-- hero banner -->
+<div class="mt-3 grid gap-6 lg:grid-cols-2 items-center">
+<div class="reveal">
+<span class="badge-gold">Free · No Obligation</span>
+<h1 class="mt-3 font-heading text-4xl font-extrabold text-[#174A5B] dark:text-white">Get a Personalized Quote</h1>
+<p class="mt-3 opacity-75 leading-relaxed">Answer a few simple questions and an advisor will prepare a clear, comparable demo quote. Your information is used only for this demonstration.</p>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<a href="#quote-form" class="rounded-xl bg-[#174A5B] px-7 py-3 font-semibold text-white hover:bg-[#0f3540] transition text-center">Start My Quote</a>
+<a href="plans.html" class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-7 py-2.5 font-semibold text-[#174A5B] dark:text-white hover:bg-[#174A5B] hover:text-white transition text-center">Compare Plans First</a>
+</div>
+</div>
+<img src="images/hero/consultation.jpg" alt="Documents and pen ready for a personalized quote request" class="rounded-3xl reveal w-full" loading="lazy">
+</div>
+<!-- quote form -->
+<div class="mx-auto max-w-3xl">
+<h2 id="quote-form" class="mt-12 font-heading text-2xl font-extrabold reveal">Request Your Quote</h2>
+<p class="mt-1 text-sm opacity-70 reveal">Takes about 2 minutes. Only the basics — no medical records needed.</p>
+<form data-validate="quote" class="mt-6 rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6 sm:p-8 grid gap-5 sm:grid-cols-2 reveal" novalidate>
+<div><label class="lbl" for="q-name">Full Name *</label><input class="field" id="q-name" name="name" required autocomplete="name" placeholder="Jordan Ellis"></div>
+<div><label class="lbl" for="q-email">Email *</label><input class="field" id="q-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+<div><label class="lbl" for="q-phone">Phone *</label><input class="field" id="q-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+1 555 000 1234"></div>
+<div><label class="lbl" for="q-dob">Date of Birth *</label><input class="field" id="q-dob" name="dob" type="date" required></div>
+<div><label class="lbl" for="q-type">Coverage Type *</label><select class="field" id="q-type" name="coverage-type" required><option value="">Choose…</option><option>Life Insurance</option><option>Health Insurance</option><option>Both</option><option>Not sure yet</option></select></div>
+<div><label class="lbl" for="q-amount">Coverage Amount *</label><select class="field" id="q-amount" name="amount" required><option value="">Choose…</option><option>Up to $100,000</option><option>$100,000 – $500,000</option><option>$500,000+</option><option>Help me decide</option></select></div>
+<div><label class="lbl" for="q-term">Policy Term</label><select class="field" id="q-term" name="term"><option value="">Choose…</option><option>10 years</option><option>20 years</option><option>Lifetime / long-term</option><option>Yearly renewable</option></select></div>
+<div><label class="lbl" for="q-dep">Number of Dependents</label><select class="field" id="q-dep" name="dependents"><option>0</option><option>1</option><option>2</option><option>3+</option></select></div>
+<div><label class="lbl" for="q-emp">Employment Status</label><select class="field" id="q-emp" name="employment"><option value="">Choose…</option><option>Employed</option><option>Self-employed</option><option>Student</option><option>Retired</option></select></div>
+<div><label class="lbl" for="q-contact">Preferred Contact Method</label><select class="field" id="q-contact" name="contact"><option>Email</option><option>Phone</option><option>Either</option></select></div>
+<div class="sm:col-span-2"><label class="lbl" for="q-health">General Health Information (optional, brief)</label><textarea class="field" id="q-health" name="health" rows="3" placeholder="e.g., non-smoker, generally healthy — keep it brief"></textarea></div>
+<div class="sm:col-span-2 flex flex-col sm:flex-row gap-3"><button type="submit" class="rounded-xl bg-[#174A5B] px-8 py-3.5 font-semibold text-white hover:bg-[#0f3540]">Request Quote</button><a href="plans.html" class="rounded-xl border px-8 py-3 text-center font-semibold">Compare Plans First</a></div>
+<p class="sm:col-span-2 text-xs opacity-60">Demo form only — no real underwriting. Do not enter highly sensitive medical details.</p>
+</form>
+</div>
+<!-- what happens next -->
+<section class="mt-14">
+<div class="text-center reveal">
+<span class="badge-gold">After You Submit</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">What Happens Next</h2>
+<p class="mt-2 text-sm opacity-70">Three simple steps between your request and a quote you can act on.</p>
+</div>
+<div class="mt-6 grid gap-4 sm:grid-cols-3">
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6">
+<span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#174A5B] text-white font-heading font-bold">1</span>
+<h3 class="mt-4 font-heading text-lg font-bold">We Review Your Answers</h3>
+<p class="mt-2 text-sm opacity-70">An advisor checks your coverage type, amount, and term for suitability — usually within 24 hours.</p>
+</article>
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6">
+<span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#174A5B] text-white font-heading font-bold">2</span>
+<h3 class="mt-4 font-heading text-lg font-bold">You Receive Comparable Options</h3>
+<p class="mt-2 text-sm opacity-70">Demo plans side by side with sample premiums, benefits, exclusions, and waiting periods in plain language.</p>
+</article>
+<article class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6">
+<span class="flex h-10 w-10 items-center justify-center rounded-full bg-[#174A5B] text-white font-heading font-bold">3</span>
+<h3 class="mt-4 font-heading text-lg font-bold">You Decide, At Your Pace</h3>
+<p class="mt-2 text-sm opacity-70">Ask questions, adjust coverage, or walk away — no pressure, no obligation, no hidden fees.</p>
+</article>
+</div>
+</section>
+<!-- testimonials -->
+<section class="mt-14">
+<div class="text-center reveal">
+<span class="badge-gold">Client Stories</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">People Who Started With a Quote</h2>
+<p class="mt-2 text-sm opacity-70">Fictional demo stories for illustration purposes.</p>
+</div>
+<div class="mt-6 grid gap-4 md:grid-cols-3">
+<figure class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6">
+<div class="text-[#D89B5B] text-sm" aria-label="5 out of 5 stars">★★★★★</div>
+<blockquote class="mt-3 text-sm opacity-75">“The quote form took two minutes. What came back actually made sense — three options, no jargon, no sales calls.”</blockquote>
+<figcaption class="mt-4 flex items-center gap-3">
+<img src="images/testimonials/client-5.jpg" alt="Demo client portrait of Maya S." class="h-11 w-11 rounded-full object-cover" loading="lazy">
+<div><p class="font-heading font-bold text-sm">Maya S.</p><p class="text-xs opacity-60">Life cover quote</p></div>
+</figcaption>
+</figure>
+<figure class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6">
+<div class="text-[#D89B5B] text-sm" aria-label="5 out of 5 stars">★★★★★</div>
+<blockquote class="mt-3 text-sm opacity-75">“I asked to 'help me decide' on coverage amount. The advisor walked me through it like a conversation, not a sales pitch.”</blockquote>
+<figcaption class="mt-4 flex items-center gap-3">
+<img src="images/clients/client-happy.jpg" alt="Demo client portrait of Sofia K." class="h-11 w-11 rounded-full object-cover" loading="lazy">
+<div><p class="font-heading font-bold text-sm">Tomasz K.</p><p class="text-xs opacity-60">Health cover quote</p></div>
+</figcaption>
+</figure>
+<figure class="reveal lift rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] p-6">
+<div class="text-[#D89B5B] text-sm" aria-label="5 out of 5 stars">★★★★★</div>
+<blockquote class="mt-3 text-sm opacity-75">“Got three demo options by email the next morning. The comparison table made the differences obvious.”</blockquote>
+<figcaption class="mt-4 flex items-center gap-3">
+<img src="images/advisors/advisor-7.jpg" alt="Demo client portrait of Rob W." class="h-11 w-11 rounded-full object-cover" loading="lazy">
+<div><p class="font-heading font-bold text-sm">Lena &amp; Rob W.</p><p class="text-xs opacity-60">Family cover quote</p></div>
+</figcaption>
+</figure>
+</div>
+</section>
+<!-- map -->
+<section class="mt-14 relative rounded-3xl bg-white dark:bg-[#203940] border border-[#e3ecec] dark:border-[#2e4f58] overflow-hidden reveal">
+<div class="grid lg:grid-cols-2 items-stretch lg:min-h-[540px]">
+<div class="p-6 sm:p-8 lg:p-10">
+<span class="badge-gold">Visit Us</span>
+<h2 class="mt-3 font-heading text-2xl sm:text-3xl font-extrabold">Meet Us in Person</h2>
+<p class="mt-2 text-sm opacity-70">Prefer face-to-face? Book an in-office appointment — same plain-language guidance, over a cup of coffee.</p>
+<dl class="mt-6 space-y-4">
+<div class="flex gap-3">
+<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+<div><dt class="font-heading font-bold text-sm">Office Address</dt><dd class="mt-0.5 text-sm opacity-70">123 Harbour Street, Suite 210<br>Clearwater Bay, CB1 4LP</dd></div>
+</div>
+<div class="flex gap-3">
+<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+<div><dt class="font-heading font-bold text-sm">Opening Hours</dt><dd class="mt-0.5 text-sm opacity-70">Mon – Fri: 9:00 – 18:00<br>Sat: 10:00 – 14:00 · Sun: Closed</dd></div>
+</div>
+<div class="flex gap-3">
+<span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+<div><dt class="font-heading font-bold text-sm">Phone &amp; Email</dt><dd class="mt-0.5 text-sm opacity-70">+1 (555) 010-2233<br>hello@clearpath-demo.com</dd></div>
+</div>
+</dl>
+<div class="mt-6 flex flex-col sm:flex-row gap-3">
+<a href="contact.html" class="rounded-xl bg-[#174A5B] px-7 py-3 font-semibold text-white hover:bg-[#0f3540] transition text-center">Book an Appointment</a>
+<a href="https://www.openstreetmap.org/?mlat=41.8827&amp;mlon=-87.6233#map=16/41.8827/-87.6233" target="_blank" rel="noopener" class="rounded-xl border-2 border-[#174A5B] dark:border-[#5FA8A0] px-7 py-2.5 font-semibold text-[#174A5B] dark:text-white hover:bg-[#174A5B] hover:text-white transition text-center">Get Directions</a>
+</div>
+<p class="mt-4 text-xs opacity-60">Fictional demo office location shown for illustration only.</p>
+</div>
+<div class="relative h-[300px] sm:h-[400px] lg:h-auto">
+<iframe title="ClearPath office location map" src="https://www.openstreetmap.org/export/embed.html?bbox=-87.6383%2C41.8747%2C-87.6083%2C41.8907&amp;layer=mapnik&amp;marker=41.8827%2C-87.6233" class="absolute inset-0 h-full w-full border-0 block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</section>
+</main>
+<div id="footer"></div>
+<script src="js/navbar.js"></script><script src="js/footer.js"></script><script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | ClearPath Insurance Advisors</title>
+<meta name="description" content="Demo admin portal — manage clients, quotes, applications, claims, plans, and messages.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+(function(){try{var t=localStorage.getItem("site-theme");if(t==="dark")document.documentElement.classList.add("dark");var d=localStorage.getItem("site-direction");document.documentElement.dir=d==="rtl"?"rtl":"ltr";}catch(e){}})();
+tailwind.config={darkMode:"class",theme:{screens:{sm:"640px",md:"768px",lg:"1100px",xl:"1280px","2xl":"1536px"},extend:{colors:{trust:"#174A5B",sage:"#5FA8A0",mist:"#F4F8F8",ink:"#24343A",gold:"#D89B5B",darkbg:"#15272D",darksurf:"#203940"},fontFamily:{heading:["Plus Jakarta Sans","Inter","sans-serif"],body:["Inter","sans-serif"]}}}};
+</script>
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="images/logo/logo.jpg" type="image/jpeg">
+</head>
+<body class="bg-[#F4F8F8] dark:bg-[#15272D] text-[#24343A] dark:text-[#F4F8F8] font-body antialiased">
+<div class="flex min-h-screen">
+<div id="dash-backdrop" class="hidden fixed inset-0 bg-black/40 z-30 lg:hidden"></div>
+<aside id="dash-sidebar" class="fixed lg:sticky lg:top-0 lg:h-screen z-40 lg:z-auto top-0 bottom-0 start-0 w-72 lg:w-64 shrink-0 bg-white dark:bg-[#203940] border-e border-[#e3ecec] dark:border-[#2e4f58] p-4 space-y-1 -translate-x-full transition-transform overflow-y-auto" aria-label="Admin menu" style="inset-inline-start:0">
+<div class="flex items-start justify-between gap-2">
+<div class="px-2 py-3 flex items-center gap-2.5">
+<a href="index.html" class="flex items-center gap-2" aria-label="ClearPath home">
+<span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#174A5B] text-white shrink-0" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+<span class="leading-tight"><span class="block font-heading text-[1.05rem] font-extrabold tracking-wide text-[#174A5B] dark:text-white">CLEARPATH</span><span class="block text-[.62rem] font-medium tracking-[.18em] uppercase text-[#5FA8A0]">Insurance Advisors</span></span>
+</a>
+</div>
+<button data-close-sidebar type="button" aria-label="Close menu" class="lg:hidden m-2 shrink-0 rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2 text-[#174A5B] dark:text-white hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+</div>
+<div class="px-2 py-1 border-b border-[#e3ecec] dark:border-[#2e4f58] pb-3 mb-2"><p class="font-heading font-bold text-sm">Admin Portal</p><p class="text-xs opacity-60">Demo — not real claim processing.</p></div>
+<div class="lg:hidden mt-3 px-2 pb-3 mb-2 border-b border-[#e3ecec] dark:border-[#2e4f58]">
+<p class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Settings</p>
+<div class="flex flex-wrap items-center gap-2">
+<button data-theme-toggle type="button" aria-label="Toggle color theme" title="Toggle color theme" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"></button>
+<button data-rtl-toggle type="button" aria-label="Toggle text direction" title="Toggle text direction (LTR/RTL)" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></button>
+<button type="button" aria-label="Notifications" title="Notifications" onclick="showToast('3 pending applications need review (demo).')" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#15272D]"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg></button>
+<button type="button" data-section="messages" aria-label="Open messages" class="flex items-center gap-2 rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-1.5 pe-3 hover:bg-[#F4F8F8] dark:hover:bg-[#15272D] transition"><img src="images/advisors/admin-avatar.jpg" alt="" class="h-8 w-8 rounded-full object-cover" loading="lazy"><span class="text-sm font-semibold">Alex Morgan</span></button>
+</div>
+</div>
+<a href="#overview" data-section="overview" class="sidebar-link active"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Overview</a>
+<a href="#clients" data-section="clients" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Clients</a>
+<a href="#quotes" data-section="quotes" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Quotes</a>
+<a href="#applications" data-section="applications" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>Applications</a>
+<a href="#claims" data-section="claims" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Claims</a>
+<a href="#plans" data-section="plans" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>Plans</a>
+<a href="#messages" data-section="messages" class="sidebar-link"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Messages</a>
+<button data-logout class="sidebar-link w-full text-start"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</button>
+</aside>
+<div class="flex-1 min-w-0 flex flex-col">
+<header class="sticky top-0 z-20 bg-white/90 dark:bg-[#15272D]/90 backdrop-blur border-b border-[#e3ecec] dark:border-[#2e4f58]">
+<div class="flex items-center justify-between gap-3 px-4 sm:px-6 py-3">
+<div class="flex items-center gap-2.5">
+<a href="index.html" class="flex items-center gap-2" aria-label="ClearPath home">
+<span class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#174A5B] text-white" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+<span class="leading-tight"><span class="block font-heading text-sm font-extrabold tracking-wide text-[#174A5B] dark:text-white">CLEARPATH</span><span class="block text-[.62rem] font-medium tracking-[.18em] uppercase text-[#5FA8A0]">Admin Portal</span></span>
+</a>
+</div>
+<div class="flex items-center gap-1.5 sm:gap-2">
+<div class="hidden lg:flex items-center gap-1.5 sm:gap-2">
+<button data-theme-toggle type="button" aria-label="Toggle color theme" title="Toggle color theme" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#203940]"></button>
+<button data-rtl-toggle type="button" aria-label="Toggle text direction" title="Toggle text direction (LTR/RTL)" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#203940]"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg></button>
+<button type="button" aria-label="Notifications" title="Notifications" onclick="showToast('3 pending applications need review (demo).')" class="rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-2.5 text-[#174A5B] dark:text-[#F4F8F8] hover:bg-[#F4F8F8] dark:hover:bg-[#203940]"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg></button>
+<button type="button" data-section="messages" aria-label="Open messages" class="flex items-center gap-2 rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] p-1.5 pe-3 hover:bg-[#F4F8F8] dark:hover:bg-[#203940] transition"><img src="images/advisors/admin-avatar.jpg" alt="" class="h-8 w-8 rounded-full object-cover" loading="lazy"><span class="hidden sm:block text-sm font-semibold">Alex Morgan</span></button>
+</div>
+<button id="dash-menu-btn" type="button" aria-label="Open admin menu" class="lg:hidden rounded-xl border border-[#e3ecec] dark:border-[#2e4f58] bg-white dark:bg-[#203940] p-2.5 text-[#174A5B] dark:text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+</div>
+</div>
+</header>
+<main class="flex-1 p-4 sm:p-6 space-y-6 max-w-7xl w-full mx-auto">
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><h1 class="font-heading text-2xl font-extrabold">Admin Overview</h1><p class="text-sm opacity-60">Fictional demo data for illustration.</p></div>
+<!-- OVERVIEW -->
+<section id="overview" class="dash-section grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs uppercase opacity-60 font-bold">Total Clients</p><p class="font-heading text-2xl font-extrabold">128</p><p class="text-xs mt-1 text-[#5FA8A0] font-semibold">+6 this month</p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs uppercase opacity-60 font-bold">Pending Applications</p><p class="font-heading text-2xl font-extrabold">14</p><p class="text-xs mt-1 text-[#D89B5B] font-semibold">3 need documents</p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs uppercase opacity-60 font-bold">Open Claims</p><p class="font-heading text-2xl font-extrabold">9</p><p class="text-xs mt-1 text-[#D89B5B] font-semibold">2 past SLA</p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]"><p class="text-xs uppercase opacity-60 font-bold">Quote Requests</p><p class="font-heading text-2xl font-extrabold">23</p><p class="text-xs mt-1 text-[#5FA8A0] font-semibold">8 awaiting response</p></div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58] sm:col-span-2 xl:col-span-4">
+<h3 class="font-heading font-extrabold">Pipeline by Status</h3>
+<div class="mt-4 space-y-3 text-sm">
+<div><div class="flex justify-between text-xs opacity-70"><span>Applications — New</span><span>5</span></div><div class="progress-track mt-1"><div class="progress-fill" style="width:36%"></div></div></div>
+<div><div class="flex justify-between text-xs opacity-70"><span>Applications — Under Review</span><span>7</span></div><div class="progress-track mt-1"><div class="progress-fill" style="width:50%"></div></div></div>
+<div><div class="flex justify-between text-xs opacity-70"><span>Quotes — Reviewing</span><span>3</span></div><div class="progress-track mt-1"><div class="progress-fill" style="width:22%"></div></div></div>
+<div><div class="flex justify-between text-xs opacity-70"><span>Claims — Documents Requested</span><span>4</span></div><div class="progress-track mt-1"><div class="progress-fill" style="width:30%"></div></div></div>
+</div>
+</div>
+<div class="rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58] sm:col-span-2 xl:col-span-2">
+<h3 class="font-heading font-extrabold">Recent Admin Activity</h3>
+<ul class="mt-4 space-y-3 text-sm">
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><p class="font-semibold">Quote sent to Maya R. — Family Plus</p><p class="text-xs opacity-60">06 Oct 2026 · Priya B.</p></div></li>
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#D89B5B]/15 text-[#D89B5B]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></span><div><p class="font-semibold">Claim CLM-1007 flagged — docs overdue</p><p class="text-xs opacity-60">05 Oct 2026</p></div></li>
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></span><div><p class="font-semibold">New client registered — Sara K.</p><p class="text-xs opacity-60">04 Oct 2026</p></div></li>
+<li class="flex items-start gap-3"><span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#174A5B]/10 dark:bg-[#5FA8A0]/15 text-[#174A5B] dark:text-[#5FA8A0]"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/></svg></span><div><p class="font-semibold">Plan "Winter Wellness" added</p><p class="text-xs opacity-60">02 Oct 2026</p></div></li>
+</ul>
+</div>
+<div class="rounded-2xl bg-[#174A5B] text-white p-5 sm:col-span-2 xl:col-span-2">
+<h3 class="font-heading font-extrabold">Today's Focus</h3>
+<ul class="mt-3 space-y-2 text-sm text-white/80">
+<li>· Review 3 applications awaiting underwriter notes</li>
+<li>· Chase documents on claims CLM-1007 and CLM-1012</li>
+<li>· Respond to 2 unread client messages</li>
+<li>· Update sample premiums for Harbor Health plans</li>
+</ul>
+<button data-section="applications" class="mt-4 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-[#174A5B]">Open Applications</button>
+</div>
+</section>
+<!-- CLIENTS -->
+<section id="clients" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]">
+<div class="flex flex-wrap items-center justify-between gap-3">
+<div><h2 class="font-heading text-lg font-extrabold">Clients</h2><p class="text-xs opacity-60 mt-1">128 demo client records.</p></div>
+<div class="flex gap-2">
+<input type="search" placeholder="Search clients…" class="field !w-auto !py-2 text-sm" aria-label="Search clients">
+<button onclick="showToast('New client form opened (demo).')" class="rounded-xl bg-[#174A5B] px-4 py-2 text-sm font-semibold text-white">+ Add Client</button>
+</div>
+</div>
+<div class="mt-4 grid gap-3 sm:grid-cols-4">
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Active</p><p class="font-heading font-extrabold">96</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">In application</p><p class="font-heading font-extrabold">18</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">With open claims</p><p class="font-heading font-extrabold">9</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Inactive</p><p class="font-heading font-extrabold">5</p></div>
+</div>
+<div class="table-scroll mt-4"><table class="stack-table w-full min-w-[720px] text-sm"><thead><tr class="text-xs uppercase opacity-60 text-start"><th class="text-start py-2 pe-3">Client</th><th class="text-start py-2 pe-3">Email</th><th class="text-start py-2 pe-3">Type</th><th class="text-start py-2 pe-3">App Status</th><th class="text-start py-2 pe-3">Claim</th><th class="text-start py-2">Action</th></tr></thead>
+<tbody>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3 font-semibold">Maya R.</td><td data-label="Email" class="py-3 pe-3">maya.r@example.com</td><td data-label="Type" class="py-3 pe-3">Family Health</td><td data-label="App Status" class="py-3 pe-3">Under Review</td><td data-label="Claim" class="py-3 pe-3">—</td><td data-label="Action" class="py-3"><button class="text-[#5FA8A0] font-semibold" onclick="showToast('Demo client record.')">View</button></td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3 font-semibold">Tom H.</td><td data-label="Email" class="py-3 pe-3">tom.h@example.com</td><td data-label="Type" class="py-3 pe-3">Term Life</td><td data-label="App Status" class="py-3 pe-3">Documents Pending</td><td data-label="Claim" class="py-3 pe-3">Open</td><td data-label="Action" class="py-3"><button class="text-[#5FA8A0] font-semibold" onclick="showToast('Demo client record.')">View</button></td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3 font-semibold">Sara K.</td><td data-label="Email" class="py-3 pe-3">sara.k@example.com</td><td data-label="Type" class="py-3 pe-3">Senior Health</td><td data-label="App Status" class="py-3 pe-3">Approved</td><td data-label="Claim" class="py-3 pe-3">Completed</td><td data-label="Action" class="py-3"><button class="text-[#5FA8A0] font-semibold" onclick="showToast('Demo client record.')">View</button></td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3 font-semibold">Ahmed L.</td><td data-label="Email" class="py-3 pe-3">ahmed.l@example.com</td><td data-label="Type" class="py-3 pe-3">Individual Health</td><td data-label="App Status" class="py-3 pe-3">New</td><td data-label="Claim" class="py-3 pe-3">—</td><td data-label="Action" class="py-3"><button class="text-[#5FA8A0] font-semibold" onclick="showToast('Demo client record.')">View</button></td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3 font-semibold">Grace P.</td><td data-label="Email" class="py-3 pe-3">grace.p@example.com</td><td data-label="Type" class="py-3 pe-3">Family Life</td><td data-label="App Status" class="py-3 pe-3">Approved</td><td data-label="Claim" class="py-3 pe-3">—</td><td data-label="Action" class="py-3"><button class="text-[#5FA8A0] font-semibold" onclick="showToast('Demo client record.')">View</button></td></tr>
+</tbody></table></div>
+</section>
+<!-- QUOTES -->
+<section id="quotes" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]">
+<h2 class="font-heading text-lg font-extrabold">Quote Management</h2>
+<div class="mt-3 grid gap-3 sm:grid-cols-4">
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">New</p><p class="font-heading font-extrabold">5</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Reviewing</p><p class="font-heading font-extrabold">3</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Sent</p><p class="font-heading font-extrabold">12</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Accepted</p><p class="font-heading font-extrabold">3</p></div>
+</div>
+<div class="table-scroll mt-4"><table class="stack-table w-full min-w-[720px] text-sm"><thead><tr class="text-xs uppercase opacity-60 text-start"><th class="text-start py-2 pe-3">Client</th><th class="text-start py-2 pe-3">Plan</th><th class="text-start py-2 pe-3">Insurer</th><th class="text-start py-2 pe-3">Premium</th><th class="text-start py-2 pe-3">Status</th><th class="text-start py-2">Date</th></tr></thead>
+<tbody>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3">Maya R.</td><td data-label="Plan" class="py-3 pe-3">Family Plus</td><td data-label="Insurer" class="py-3 pe-3">Harbor Health</td><td data-label="Premium" class="py-3 pe-3">$310/mo sample</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option>New</option><option>Reviewing</option><option selected>Sent</option><option>Accepted</option><option>Expired</option></select></td><td data-label="Date" class="py-3">06 Oct 2026</td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3">Tom H.</td><td data-label="Plan" class="py-3 pe-3">Term Protect 20</td><td data-label="Insurer" class="py-3 pe-3">Northstar Life</td><td data-label="Premium" class="py-3 pe-3">$42/mo sample</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option>New</option><option selected>Reviewing</option><option>Sent</option><option>Accepted</option><option>Expired</option></select></td><td data-label="Date" class="py-3">05 Oct 2026</td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3">Sara K.</td><td data-label="Plan" class="py-3 pe-3">Senior Shield</td><td data-label="Insurer" class="py-3 pe-3">EverCare Insurance</td><td data-label="Premium" class="py-3 pe-3">$210/mo sample</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option selected>New</option><option>Reviewing</option><option>Sent</option><option>Accepted</option><option>Expired</option></select></td><td data-label="Date" class="py-3">04 Oct 2026</td></tr>
+</tbody></table></div>
+</section>
+<!-- APPLICATIONS -->
+<section id="applications" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]">
+<h2 class="font-heading text-lg font-extrabold">Applications</h2>
+<p class="text-xs opacity-60 mt-1">14 pending · average review time 5.2 days (demo)</p>
+<div class="table-scroll mt-4"><table class="stack-table w-full min-w-[720px] text-sm"><thead><tr class="text-xs uppercase opacity-60 text-start"><th class="text-start py-2 pe-3">Client</th><th class="text-start py-2 pe-3">Product</th><th class="text-start py-2 pe-3">Insurer</th><th class="text-start py-2 pe-3">Submitted</th><th class="text-start py-2 pe-3">Status</th><th class="text-start py-2">Advisor</th></tr></thead>
+<tbody>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3">Maya R.</td><td data-label="Product" class="py-3 pe-3">Family Plus</td><td data-label="Insurer" class="py-3 pe-3">Harbor Health</td><td data-label="Submitted" class="py-3 pe-3">01 Oct 2026</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option>New</option><option>Documents Pending</option><option selected>Under Review</option><option>Approved</option><option>Rejected</option></select></td><td data-label="Advisor" class="py-3">Priya B.</td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3">Tom H.</td><td data-label="Product" class="py-3 pe-3">Term Protect 20</td><td data-label="Insurer" class="py-3 pe-3">Northstar Life</td><td data-label="Submitted" class="py-3 pe-3">28 Sep 2026</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option>New</option><option selected>Documents Pending</option><option>Under Review</option><option>Approved</option><option>Rejected</option></select></td><td data-label="Advisor" class="py-3">Daniel C.</td></tr>
+<tr class="border-t"><td data-label="Client" class="py-3 pe-3">Sara K.</td><td data-label="Product" class="py-3 pe-3">Senior Shield</td><td data-label="Insurer" class="py-3 pe-3">EverCare Insurance</td><td data-label="Submitted" class="py-3 pe-3">20 Sep 2026</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option selected>New</option><option>Documents Pending</option><option>Under Review</option><option>Approved</option><option>Rejected</option></select></td><td data-label="Advisor" class="py-3">Priya B.</td></tr>
+</tbody></table></div>
+<div class="mt-4 rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-4 text-sm"><strong>Reminder:</strong> applications stuck in "Documents Pending" for more than 7 days should trigger an advisor call (demo rule).</div>
+</section>
+<!-- CLAIMS -->
+<section id="claims" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]">
+<h2 class="font-heading text-lg font-extrabold">Claim Management</h2>
+<div class="mt-3 grid gap-3 sm:grid-cols-4">
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Submitted</p><p class="font-heading font-extrabold">2</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Under Review</p><p class="font-heading font-extrabold">3</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Docs Requested</p><p class="font-heading font-extrabold">4</p></div>
+<div class="rounded-xl bg-[#D89B5B]/15 text-[#D89B5B] p-3 text-sm"><p class="text-xs opacity-80">Past SLA</p><p class="font-heading font-extrabold">2</p></div>
+</div>
+<div class="table-scroll mt-4"><table class="stack-table w-full min-w-[720px] text-sm"><thead><tr class="text-xs uppercase opacity-60 text-start"><th class="text-start py-2 pe-3">Claim ID</th><th class="text-start py-2 pe-3">Client</th><th class="text-start py-2 pe-3">Type</th><th class="text-start py-2 pe-3">Submitted</th><th class="text-start py-2 pe-3">Status</th><th class="text-start py-2">Docs</th></tr></thead>
+<tbody>
+<tr class="border-t"><td data-label="Claim ID" class="py-3 pe-3 font-semibold">CLM-1007</td><td data-label="Client" class="py-3 pe-3">Maya R.</td><td data-label="Type" class="py-3 pe-3">Hospitalization</td><td data-label="Submitted" class="py-3 pe-3">12 Sep 2026</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option>Submitted</option><option>Under Review</option><option selected>Documents Requested</option><option>Approved</option><option>Rejected</option><option>Completed</option></select></td><td data-label="Docs" class="py-3">5/7</td></tr>
+<tr class="border-t"><td data-label="Claim ID" class="py-3 pe-3 font-semibold">CLM-0988</td><td data-label="Client" class="py-3 pe-3">Tom H.</td><td data-label="Type" class="py-3 pe-3">Health</td><td data-label="Submitted" class="py-3 pe-3">02 Aug 2026</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option>Submitted</option><option selected>Under Review</option><option>Documents Requested</option><option>Approved</option><option>Rejected</option><option>Completed</option></select></td><td data-label="Docs" class="py-3">4/7</td></tr>
+<tr class="border-t"><td data-label="Claim ID" class="py-3 pe-3 font-semibold">CLM-1012</td><td data-label="Client" class="py-3 pe-3">Sara K.</td><td data-label="Type" class="py-3 pe-3">Outpatient</td><td data-label="Submitted" class="py-3 pe-3">28 Sep 2026</td><td data-label="Status" class="py-3 pe-3"><select data-admin-status class="field !w-auto !py-1.5 text-xs"><option selected>Submitted</option><option>Under Review</option><option>Documents Requested</option><option>Approved</option><option>Rejected</option><option>Completed</option></select></td><td data-label="Docs" class="py-3">7/7</td></tr>
+</tbody></table></div>
+<div class="mt-4 flex flex-wrap gap-2">
+<button class="rounded-xl border px-4 py-2 text-xs font-semibold" onclick="showToast('SLA report exported (demo).')">Export SLA Report</button>
+<button class="rounded-xl border px-4 py-2 text-xs font-semibold" onclick="showToast('Reminder sent to clients (demo).')">Send Document Reminders</button>
+</div>
+</section>
+<!-- PLANS -->
+<section id="plans" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]">
+<h2 class="font-heading text-lg font-extrabold">Plan Management</h2>
+<div class="mt-3 grid gap-3 sm:grid-cols-4">
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Active plans</p><p class="font-heading font-extrabold">2</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Insurers</p><p class="font-heading font-extrabold">4</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Life plans</p><p class="font-heading font-extrabold">1</p></div>
+<div class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3 text-sm"><p class="text-xs opacity-60">Health plans</p><p class="font-heading font-extrabold">1</p></div>
+</div>
+<form id="add-plan-form" class="mt-4 grid gap-3 sm:grid-cols-4">
+<div><label class="lbl" for="np-name">Plan Name</label><input id="np-name" class="field" placeholder="Demo Plan"></div>
+<div><label class="lbl" for="np-insurer">Insurer</label><input id="np-insurer" class="field" placeholder="Demo Insurer"></div>
+<div><label class="lbl" for="np-prem">Sample Premium</label><input id="np-prem" class="field" placeholder="$99/mo sample"></div>
+<div class="flex items-end"><button class="w-full rounded-xl bg-[#174A5B] px-4 py-3 text-sm font-semibold text-white">Add Plan</button></div>
+</form>
+<div class="table-scroll mt-4"><table class="stack-table w-full min-w-[640px] text-sm"><thead><tr class="text-xs uppercase opacity-60 text-start"><th class="text-start py-2 pe-3">Plan</th><th class="text-start py-2 pe-3">Insurer</th><th class="text-start py-2 pe-3">Type</th><th class="text-start py-2 pe-3">Premium</th><th class="text-start py-2">Status</th></tr></thead><tbody id="admin-plans-body">
+<tr class="border-t"><td data-label="Plan" class="py-3 pe-3 font-semibold">Essential Health</td><td data-label="Insurer" class="py-3 pe-3">EverCare Insurance</td><td data-label="Type" class="py-3 pe-3">Health</td><td data-label="Premium" class="py-3 pe-3">$185/mo sample</td><td data-label="Status" class="py-3"><span class="badge-gold">Active</span></td></tr>
+<tr class="border-t"><td data-label="Plan" class="py-3 pe-3 font-semibold">Term Protect 20</td><td data-label="Insurer" class="py-3 pe-3">Northstar Life</td><td data-label="Type" class="py-3 pe-3">Life</td><td data-label="Premium" class="py-3 pe-3">$42/mo sample</td><td data-label="Status" class="py-3"><span class="badge-gold">Active</span></td></tr>
+</tbody></table></div>
+</section>
+<!-- MESSAGES -->
+<section id="messages" class="dash-section hidden rounded-2xl bg-white dark:bg-[#203940] border p-5 border-[#e3ecec] dark:border-[#2e4f58]">
+<h2 class="font-heading text-lg font-extrabold">Messages</h2>
+<p class="text-xs opacity-60 mt-1">2 unread client messages.</p>
+<div class="mt-3 space-y-2 text-sm"><p class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3"><strong>Maya R.:</strong> Could you explain the waiting period on Family Plus? <button class="ms-2 font-semibold text-[#5FA8A0]" onclick="showToast('Reply sent (demo).')">Reply</button></p>
+<p class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3"><strong>Tom H.:</strong> Uploaded my ID — is anything else needed? <button class="ms-2 font-semibold text-[#5FA8A0]" onclick="showToast('Reply sent (demo).')">Reply</button></p>
+<p class="rounded-xl bg-[#F4F8F8] dark:bg-[#15272D] p-3"><strong>Sara K.:</strong> When will my senior plan documents arrive? <button class="ms-2 font-semibold text-[#5FA8A0]" onclick="showToast('Reply sent (demo).')">Reply</button></p></div>
+<form class="mt-6 rounded-2xl border border-[#e3ecec] dark:border-[#2e4f58] p-4" onsubmit="event.preventDefault();showToast('Broadcast message queued (demo).');this.reset();">
+<h3 class="font-heading font-bold text-sm">Compose message</h3>
+<div class="mt-3 grid gap-3 sm:grid-cols-2">
+<div><label class="lbl" for="msg-to">To</label><select id="msg-to" class="field"><option>All clients</option><option>Maya R.</option><option>Tom H.</option><option>Sara K.</option></select></div>
+<div><label class="lbl" for="msg-subject">Subject</label><input id="msg-subject" class="field" placeholder="Renewal reminder"></div>
+<div class="sm:col-span-2"><label class="lbl" for="msg-body">Message</label><textarea id="msg-body" rows="3" class="field" placeholder="Type your message…"></textarea></div>
+<div class="sm:col-span-2"><button class="rounded-xl bg-[#174A5B] px-6 py-2.5 text-sm font-semibold text-white">Send Message</button></div>
+</div>
+</form>
+</section>
+</main>
+<footer class="px-4 sm:px-6 py-4 text-center text-xs opacity-60 border-t border-[#e3ecec] dark:border-[#2e4f58]">Demo admin portal. Fictional data — not real claim processing.</footer>
+</div>
+</div>
+<script src="js/dashboard.js"></script><script src="js/main.js"></script>
+</body>
+</html>
